@@ -5,7 +5,6 @@ int main(int argc, char *argv[]) {
     	
 	
 		
-	char lettres[26] = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
 
 	
 
@@ -28,24 +27,24 @@ int main(int argc, char *argv[]) {
     	}
 
 	
-	char car;
+	char ch;
 	int bond = 3;  
 
-	while((ch = fgetc(inputFile) != EOF && ){
+	while((ch = fgetc(inputFile)) != EOF) {
 
 		if (isalpha(ch)){
 			
-			if (isupper(ch){
+			if (isupper(ch)) {
 				
-				int calcul = (((ch - 'A') + bon)% 26);
+				int calcul = (((ch - 'A') + bond)% 26);
                                 char resultat = calcul + 'A';
-                                fputc(result, outputFile);
+                                fputc(resultat, outputFile);
 				
 			} else {			
 
-				int calcul = (((ch - 'a') + bon)% 26); 
+				int calcul = (((ch - 'a') + bond)% 26); 
 				char resultat = calcul + 'a';
-				fputc(result, outputFile); 	
+				fputc(resultat, outputFile); 	
 			
                 	}
          
