@@ -3,10 +3,6 @@
 
 int main(int argc, char *argv[]) {
     	
-	
-		
-
-	
 
 	if (argc != 3) {
         	fprintf(stderr, "Usage: %s <inputfile> <outputfile>\n", argv[0]);
@@ -29,27 +25,55 @@ int main(int argc, char *argv[]) {
 	
 	char ch;
 	int bond = 3;  
-
+	int count = 0;
+ 
 	while((ch = fgetc(inputFile)) != EOF) {
+		
+		count++;
+				
+		 if (count > 80) {
+        		fprintf(stderr, "Error: the number of characters exceeds 80 on a line.\n");
+        		fclose(inputFile);
+        		fclose(outputFile);
+        		return 1;
+    		}
+
+		if(ch == '\n'){
+			
+			fputc(ch, outputFile);
+			count = 0; 
+			continue; 
+		}
+		
+		
+		if(ch == ' '){
+			
+			fputc(ch, outputFile);
+			continue; 
+			
+		}
 
 		if (isalpha(ch)){
 			
 			if (isupper(ch)) {
 				
-				int calcul = (((ch - 'A') + bond)% 26);
+				int calcul = (((ch - 'A') - bond + 26)% 26);
                                 char resultat = calcul + 'A';
                                 fputc(resultat, outputFile);
 				
 			} else {			
 
-				int calcul = (((ch - 'a') + bond)% 26); 
+				int calcul = (((ch - 'a') - bond + 26)% 26); 
 				char resultat = calcul + 'a';
 				fputc(resultat, outputFile); 	
 			
                 	}
          
 			
-		}
+		}else { 
+
+			fputc(ch, outputFile);
+		} 
 			
 		
 	}
