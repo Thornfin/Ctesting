@@ -4,17 +4,23 @@
 int main(int argc, char *argv[]) {
 	
 	if(argc != 2){
-		printf("error: exactly one argument must be provided\n");
+		printf("error: Exactly one argument must be provided\n");
 		return 1;
 	}
 		
 	char *endptr;
    	long n = strtol(argv[1], &endptr, 10);
 
-   	if (endptr == argv[1] || *endptr != '\0') {
-		printf("error: the argument must be a numeric integer\n");
-       		return 1;
-   	}
+	if (endptr == argv[1] || *endptr != '\0') {
+    		fprintf(stderr, "error: The argument must be an integer between 0 and 20\n");
+    		return 1;
+	}
+
+	// For out-of-range input
+	if (n < 0 || n > 20) {
+    		fprintf(stderr, "error: The argument must be an integer between 0 and 20\n");
+    		return 1;
+	}
 	
 	if(n >= 0 && n <= 20){
 		
